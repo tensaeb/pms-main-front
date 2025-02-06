@@ -312,6 +312,7 @@ class PropertyService {
           },
         }
       );
+
       return { success: true, data: response.data?.data, photoId };
     } catch (error) {
       throw this.handleError(error);

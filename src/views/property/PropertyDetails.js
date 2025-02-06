@@ -187,7 +187,7 @@ const PropertyDetails = () => {
         updatePhoto({
           id: id,
           photo: newPhotoFile,
-          photoId: selectedPhotoToEdit._id,
+          photoId: selectedPhotoToEdit.id,
         })
       ).unwrap();
 
@@ -416,7 +416,7 @@ const PropertyDetails = () => {
         propertyTitle={property.title}
         confirmAddPhoto={handlePhotoAdd}
         confirmUpdatePhoto={handlePhotoEdit}
-        photoId={selectedPhotoToEdit?._id}
+        photoId={selectedPhotoToEdit?.id}
         isEdit={!!selectedPhotoToEdit}
       />
     </>
