@@ -98,7 +98,7 @@ const PropertyTableRow = ({
   };
 
   const handleDeleteClick = () => {
-    onDelete(property);
+    onDelete(propertyId);
   };
 
   // new
