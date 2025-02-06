@@ -1,0 +1,123 @@
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f0f2f5; /* Light grey background */
+}
+
+.content {
+  text-align: center;
+  padding: 30px;
+  background: #fff; /* White card background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  font-size: 2.5em; /* Increased icon size */
+  margin-right: 10px;
+  color: #3498db; /* Blue */
+}
+.title {
+    font-size: 2em;
+    color: #2c3e50; /* Dark grey */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1em;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+
+.time-box {
+  margin: 0 10px;
+  text-align: center;
+}
+
+.time-value {
+  display: block;
+  font-size: 2.5em; /* Larger numbers */
+  font-weight: bold;
+  color: #3498db; /* Blue */
+}
+
+.time-label {
+  font-size: 0.8em;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+    align-items: center;
+}
+
+.email-input {
+  padding: 12px 20px;
+  padding-left: 40px; /* Added padding to accommodate the icon */
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+    width: 250px;
+  outline: none; /* Removes default focus highlight */
+}
+
+
+.input-icon {
+  position: absolute;
+  left: 15px; /* Adjust position as needed */
+  color: #777; /* Icon color */
+}
+.input-error {
+    border: 1px solid red;
+}
+
+.subscribe-button {
+  padding: 12px 20px;
+  background: #3498db; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.subscribe-button:hover {
+  background: #2980b9; /* Darker blue on hover */
+}
+
+.button-icon {
+    margin-right: 5px;
+}
+.message {
+  color: green;
+  margin-top: 10px;
+  font-weight: bold;
+}
