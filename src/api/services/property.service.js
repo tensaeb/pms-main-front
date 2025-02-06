@@ -439,6 +439,25 @@ class PropertyService {
     }
   }
 
+  async uploadExcel(formData) {
+    try {
+      // Make sure your baseURL is properly set in the service config
+      const response = await httpCommon.post(
+        `${this.baseURL}/upload/excel`,
+        formData, // Send FormData object
+        {
+          headers: {
+            ...this.getAuthHeader(),
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw this.handleError(error, "Failed to upload Excel file");
+    }
+  }
+
   createFormData(data) {
     const formData = new FormData();
     for (const key in data) {

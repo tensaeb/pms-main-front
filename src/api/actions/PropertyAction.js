@@ -225,18 +225,12 @@ export const updatePhoto = createAsyncThunk(
 
 export const importProperties = createAsyncThunk(
   "property/importProperties",
-  async (properties, { rejectWithValue }) => {
+  async (excel, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${BASE_URL}/properties/upload/excel`,
-        properties,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
-      );
-      return response.data;
+      const response = await propertyService.uploadExcel(excel);
+      return response;
     } catch (error) {
-      return rejectWithValue(error.response.data.message);
+      return rejectWithValue(error.message);
     }
   }
 );

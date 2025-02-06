@@ -15,6 +15,7 @@ import {
   addPropertyImage,
   fetchProperties,
   softDeleteProperty, // Importing the soft delete action
+  importProperties, //Import new action
 } from "../actions/PropertyAction";
 
 const initialState = {
@@ -30,6 +31,7 @@ const initialState = {
     hasPreviousPage: false,
   },
   selectedProperty: null,
+  importResult: null, // Store import results - added it to listen results after new change or flag updates
 };
 
 const propertySlice = createSlice({
@@ -46,14 +48,15 @@ const propertySlice = createSlice({
       state.properties = [];
       state.loading = false;
       state.error = null;
-      state.pagination = {
+      (state.pagination = {
         totalPages: 1,
         totalItems: 0,
         currentPage: 1,
         limit: 5,
         hasNextPage: false,
         hasPreviousPage: false,
-      };
+      }),
+        (state.importResult = null);
     },
   },
   extraReducers: (builder) => {
@@ -382,6 +385,31 @@ const propertySlice = createSlice({
       .addCase(addPropertyImage.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      // Correcting the importProperties.fulfilled case
+      .addCase(importProperties.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.importResult = null; // Clear previous result
+      })
+      .addCase(importProperties.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.importResult = action.payload; // Store the entire response
+
+        // Use action.payload.data to access the properties array
+        if (action.payload.data && Array.isArray(action.payload.data)) {
+          state.properties = [...state.properties, ...action.payload.data];
+        } else {
+          // Handle the case where action.payload.data is not an array
+          console.error("action.payload.data is not an array:", action.payload);
+          state.error = "Invalid data format from import";
+        }
+      })
+      .addCase(importProperties.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+        state.importResult = null;
       });
   },
 });
