@@ -90,11 +90,11 @@ const PropertyTableRow = ({
   };
 
   const handleEditClick = () => {
-    onEdit(property);
+    onEdit(propertyId);
   };
 
   const handleViewClick = () => {
-    onView(property);
+    onView(propertyId);
   };
 
   const handleDeleteClick = () => {
